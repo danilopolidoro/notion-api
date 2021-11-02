@@ -8,12 +8,46 @@ class TypeEnum(str, Enum):
     mention = 'mention'
     equation = 'equation'
 
+class ColorEnum(str, Enum):
+    default = 'default'
+    brown = 'brown'
+    yellow = 'yellow'
+    blue = 'blue'
+    pink = 'pink'
+    gray = 'gray'
+    orange = 'orange'
+    green = 'green'
+    purple = 'purple'
+    red = 'red'
+    gray_background = 'gray_background'
+    brown_background = 'brown_background'
+    orange_background = 'orange_background'
+    yellow_background = 'yellow_background'
+    green_background = 'green_background'
+    blue_background = 'blue_background'
+    purple_background = 'purple_background'
+    pink_background = 'pink_background'
+    red_background = 'red_background'
+
 class Annotations(BaseModel):
-    pass
+    bold:bool
+    italic:bool
+    strikethrough:bool
+    underline:bool
+    code:bool
+    color:ColorEnum = ColorEnum.default
+
+class LinkObject(BaseModel):
+    type:str = 'url'
+    url:str
+
+class TextObject(BaseModel):
+    content:str
+    link:LinkObject = None
+
 
 class RichTextObject(BaseModel):
     plain_text:str
     href:str = None
     annotations:Annotations
     type:TypeEnum
-    pass
