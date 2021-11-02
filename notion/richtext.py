@@ -29,6 +29,12 @@ class ColorEnum(str, Enum):
     pink_background = 'pink_background'
     red_background = 'red_background'
 
+class MentionEnum(str, Enum):
+    user = 'user'
+    page = 'page'
+    database = 'database'
+    date = 'date'
+
 class Annotations(BaseModel):
     bold:bool
     italic:bool
@@ -44,6 +50,12 @@ class LinkObject(BaseModel):
 class TextObject(BaseModel):
     content:str
     link:LinkObject = None
+
+class MentionObject(BaseModel):
+    type:MentionEnum
+
+class EquationObject(BaseModel):
+    expression:str
 
 class RichTextObject(BaseModel):
     plain_text:str
