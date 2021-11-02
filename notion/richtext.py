@@ -36,11 +36,11 @@ class MentionEnum(str, Enum):
     date = 'date'
 
 class Annotations(BaseModel):
-    bold:bool
-    italic:bool
-    strikethrough:bool
-    underline:bool
-    code:bool
+    bold:bool = False
+    italic:bool = False
+    strikethrough:bool = False
+    underline:bool = False
+    code:bool = False
     color:ColorEnum = ColorEnum.default
 
 class LinkObject(BaseModel):
@@ -60,5 +60,5 @@ class EquationObject(BaseModel):
 class RichTextObject(BaseModel):
     plain_text:str
     href:str = None
-    annotations:Annotations
+    annotations:Annotations = Annotations()
     type:TypeEnum
