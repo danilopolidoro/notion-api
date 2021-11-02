@@ -3,12 +3,12 @@
 from pydantic import BaseModel
 from enum import Enum
 
-class TypeEnum(str, Enum):
+class Types(str, Enum):
     text = 'text'
     mention = 'mention'
     equation = 'equation'
 
-class ColorEnum(str, Enum):
+class Colors(str, Enum):
     default = 'default'
     brown = 'brown'
     yellow = 'yellow'
@@ -29,7 +29,7 @@ class ColorEnum(str, Enum):
     pink_background = 'pink_background'
     red_background = 'red_background'
 
-class MentionEnum(str, Enum):
+class Mentions(str, Enum):
     user = 'user'
     page = 'page'
     database = 'database'
@@ -41,7 +41,7 @@ class Annotations(BaseModel):
     strikethrough:bool = False
     underline:bool = False
     code:bool = False
-    color:ColorEnum = ColorEnum.default
+    color:Colors = Colors.default
 
 class LinkObject(BaseModel):
     type:str = 'url'
@@ -52,7 +52,7 @@ class TextObject(BaseModel):
     link:LinkObject = None
 
 class MentionObject(BaseModel):
-    type:MentionEnum
+    type:Mentions
 
 class EquationObject(BaseModel):
     expression:str
@@ -61,4 +61,4 @@ class RichTextObject(BaseModel):
     plain_text:str
     href:str = None
     annotations:Annotations = Annotations()
-    type:TypeEnum
+    type:Types

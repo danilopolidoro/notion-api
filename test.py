@@ -1,10 +1,10 @@
 from notion.richtext import *
 
 test = RichTextObject(
-    type=TypeEnum.text,
+    type=Types.text,
     plain_text="Bom dia gente!"
 )
-test.annotations.color = ColorEnum.pink
+test.annotations.color = Colors.pink
 
 
 print(test.json())
