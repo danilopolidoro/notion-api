@@ -45,7 +45,6 @@ class TextObject(BaseModel):
     content:str
     link:LinkObject = None
 
-
 class RichTextObject(BaseModel):
     plain_text:str
     href:str = None
